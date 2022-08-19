@@ -1,0 +1,192 @@
+-- Nested table UT_SUITE_CACHE_TAGS is created when the parent table, UT_SUITE_CACHE, is created.
+
+
+-- Nested table UT_SUITE_CACHE_THROWS is created when the parent table, UT_SUITE_CACHE, is created.
+
+
+-- Nested table UT_SUITE_CACHE_WARNINGS is created when the parent table, UT_SUITE_CACHE, is created.
+
+
+--  There is no statement for index TTAC.SYS_C007835.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007836.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007837.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007838.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007839.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007840.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007841.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007842.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007843.
+--  The object is created when the parent object is created.
+
+--  There is no statement for index TTAC.SYS_C007844.
+--  The object is created when the parent object is created.
+
+CREATE INDEX TTAC.SYS_FK0000074525N00016$ ON TTAC.UT_SUITE_CACHE_BEFORE_ALL
+(NESTED_TABLE_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.SYS_FK0000074525N00016$
+  MONITORING USAGE;
+
+CREATE INDEX TTAC.SYS_FK0000074525N00018$ ON TTAC.UT_SUITE_CACHE_AFTER_ALL
+(NESTED_TABLE_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.SYS_FK0000074525N00018$
+  MONITORING USAGE;
+
+CREATE INDEX TTAC.SYS_FK0000074525N00020$ ON TTAC.UT_SUITE_CACHE_BEFORE_EACH
+(NESTED_TABLE_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.SYS_FK0000074525N00020$
+  MONITORING USAGE;
+
+CREATE INDEX TTAC.SYS_FK0000074525N00022$ ON TTAC.UT_SUITE_CACHE_BEFORE_TEST
+(NESTED_TABLE_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.SYS_FK0000074525N00022$
+  MONITORING USAGE;
+
+CREATE INDEX TTAC.SYS_FK0000074525N00024$ ON TTAC.UT_SUITE_CACHE_AFTER_EACH
+(NESTED_TABLE_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.SYS_FK0000074525N00024$
+  MONITORING USAGE;
+
+CREATE INDEX TTAC.SYS_FK0000074525N00026$ ON TTAC.UT_SUITE_CACHE_AFTER_TEST
+(NESTED_TABLE_ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.SYS_FK0000074525N00026$
+  MONITORING USAGE;
+
+CREATE UNIQUE INDEX TTAC.UT_SUITE_CACHE_PK ON TTAC.UT_SUITE_CACHE
+(ID)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.UT_SUITE_CACHE_PK
+  MONITORING USAGE;
+
+CREATE UNIQUE INDEX TTAC.UT_SUITE_CACHE_UK1 ON TTAC.UT_SUITE_CACHE
+(OBJECT_OWNER, PATH)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.UT_SUITE_CACHE_UK1
+  MONITORING USAGE;
+
+CREATE UNIQUE INDEX TTAC.UT_SUITE_CACHE_UK2 ON TTAC.UT_SUITE_CACHE
+(OBJECT_OWNER, OBJECT_NAME, LINE_NO)
+LOGGING
+TABLESPACE USERS
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           );
+
+ALTER INDEX TTAC.UT_SUITE_CACHE_UK2
+  MONITORING USAGE;
+
+ALTER TABLE TTAC.UT_SUITE_CACHE ADD (
+  CONSTRAINT UT_SUITE_CACHE_SCHEMA_FK 
+  FOREIGN KEY (OBJECT_OWNER, OBJECT_NAME) 
+  REFERENCES TTAC.UT_SUITE_CACHE_PACKAGE (OBJECT_OWNER, OBJECT_NAME)
+  ON DELETE CASCADE
+  ENABLE VALIDATE);
